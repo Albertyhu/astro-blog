@@ -1,0 +1,13 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ListItem from "../components/blogListItem.astro";
+const allPosts = await Astro.glob("../pages/posts/*.md");
+const pageTitle = "My Astro Learning Blog";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <p>This is where I will post about my journey learning Astro.</p>
+  <ul class="[&>a>li]:my-1 list-inside">
+    {allPosts.map((post) => <ListItem post={post} />)}
+  </ul>
+</BaseLayout>

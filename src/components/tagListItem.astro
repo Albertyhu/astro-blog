@@ -1,0 +1,11 @@
+---
+const {
+    tag,
+    url, 
+} = Astro.props; 
+---
+
+<li 
+class = "hover:underline hover:font-bold my-5 cursor-pointer capitalize rounded-[0.5em] border-dotted border-2 text-[1.5rem] border-[#a1a1a1] p-1 bg-[#F8FCFD] tagListItem">
+    <a href = {url}>{tag}</a>
+</li>

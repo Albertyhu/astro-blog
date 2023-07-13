@@ -1,0 +1,29 @@
+---
+import { toAttributeString } from "astro/dist/runtime/server/render/util";
+import BaseLayout from "./BaseLayout.astro";
+import TagListItem from "../components/tagListItem.astro";
+const { frontmatter } = Astro.props;
+const tags = frontmatter.tags; 
+---
+
+<BaseLayout pateTitle={frontmatter.title}>
+    <div 
+        class = "flex flex-col sm:flex-row sm:gap-[5em] mt-5"
+    >
+        <div>
+            <h1 class="text-2xl font-bold">{frontmatter.title}</h1>
+            <p>Written by <b>{frontmatter.author}</b></p>
+            <hr class="border-2 bg-black w-full mb-5" />
+            <slot />
+        </div>
+            {tags && tags.length > 0 &&
+            <ul>
+                {
+                tags.map(tag => <TagListItem url = {`../tags/${tag}`} tag ={tag} /> )
+                }
+            </ul>
+            }
+        <div>
+        </div>
+    </div>  
+</BaseLayout>

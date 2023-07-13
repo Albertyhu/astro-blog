@@ -1,0 +1,105 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+@layer base{
+  h1 {
+    @apply font-bold text-2xl my-1; 
+
+  }
+}
+
+@layer components {
+  .hamburger {
+    @apply my-auto ml-auto mr-[10px] pr-[20px] absolute left-[10px] top-[60%] translate-y-[-50%] cursor-pointer sm:hidden;
+  }
+  .line {
+    @apply block w-[40px] h-[5px] mb-[10px] bg-[#ff9776];
+  }
+  .fancyButton {
+    @apply w-fit px-5 py-1 rounded-lg cursor-pointer select-none active:translate-x-[1px] active:translate-y-[1px] relative bg-slate-300 text-white font-bold; 
+
+  }
+
+}
+
+body {
+  position: relative;
+  display: flex; 
+  flex-direction: column;
+}
+
+/* nav styles */
+
+.nav-links {
+  width: 100%;
+  top: 5rem;
+  left: 48px;
+  background-color: #ff9776;
+  display: none;
+  margin: 0;
+}
+
+.nav-links a {
+  display: block;
+  text-align: center;
+  padding: 10px 0;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.nav-links a:hover,
+a:focus {
+  background-color: #ff9776;
+}
+
+.expanded {
+  display: unset;
+}
+
+  .clippedShape::before{
+    clip-path: polygon(0 0, 0 0, 100% 100%, 0% 100%);
+  }
+
+  .clippedShape:hover::before{
+    clip-path: polygon(0 0, 100% 1%, 100% 100%, 0% 100%);
+  }
+
+html.dark {
+  background-color: #0d0950;
+  color: #fff;
+}
+
+.dark .nav-links a {
+  color: #fff;
+}
+
+.dark .tagListItem a {
+  color: #000000 !important;
+
+}
+
+.dark footer {
+  background-color:#000000;
+
+}
+
+@media screen and (min-width: 636px) {
+  .nav-links {
+    margin-left: 5em;
+    display: block;
+    position: static;
+    width: auto;
+    background: none;
+  }
+
+  .nav-links a {
+    display: inline-block;
+    padding: 15px 20px;
+  }
+}
+
