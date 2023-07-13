@@ -1,17 +1,22 @@
 import { defineConfig } from 'astro/config';
 import NetlifyCMS from 'astro-netlify-cms';
 import tailwind from "@astrojs/tailwind";
-
+//import DefaultLayout from './src/layouts/MarkdownPostLayout.astro'; 
 import preact from "@astrojs/preact";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), NetlifyCMS({
+  integrations: [
+    tailwind(), 
+    NetlifyCMS({
     config: {
       backend: {
         name: 'git-gateway',
-        branch: 'main'
+        branch: 'main',
       },
+      publish_mode: "editorial_workflow",
+      media_folder: "src/assets",
+      public_folder: "/assets/uploads", 
       collections: [{
         name: "posts",
         label: "Blog Posts",
@@ -21,7 +26,8 @@ export default defineConfig({
         fields: [{
           name: "layout",
           widget: "hidden",
-          label: "Layout"
+          label: "Layout",
+          default: './src/layouts/MarkdownPostLayout.astro',
         }, {
           name: "title",
           widget: 'string',
@@ -42,17 +48,28 @@ export default defineConfig({
           name: "images",
           widget: 'list',
           label: "Images",
-          fields: {
+          fields: [{
             name: "image",
             widget: 'image',
             label: "Image"
-          }
+          }]
         }, {
           name: "tags",
           widget: 'list',
-          label: "tags"
-        }]
-      }]
+          label: "tags",
+          fields:[{
+            name: "tag",
+            widget: "string",
+            label: "Tag",             
+          }]
+        }, {
+          name: "body",
+          widget: 'markdown',
+          label: "Body"
+        },
+      ]
+      }],
     }
-  }), preact()]
+  }), 
+  preact()]
 });

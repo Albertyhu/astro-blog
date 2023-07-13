@@ -6,7 +6,7 @@ const { frontmatter } = Astro.props;
 const tags = frontmatter.tags; 
 ---
 
-<BaseLayout pateTitle={frontmatter.title}>
+<BaseLayout pageTitle={frontmatter.title}>
     <div 
         class = "flex flex-col sm:flex-row sm:gap-[5em] mt-5"
     >
@@ -19,7 +19,11 @@ const tags = frontmatter.tags;
             {tags && tags.length > 0 &&
             <ul>
                 {
-                tags.map(tag => <TagListItem url = {`../tags/${tag}`} tag ={tag} /> )
+                tags.map((tag : string, index: number)=> 
+                <TagListItem 
+                url = {`../tags/${tag}`} tag ={tag} 
+                key={`${index}-${tag}`}
+                /> )
                 }
             </ul>
             }
