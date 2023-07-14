@@ -6,7 +6,7 @@ import {consoleLog} from '../hooks/logging.jsx';
 import type { TagObject } from '../util/interface.tsx';
 const { frontmatter } = Astro.props;
 const tags = frontmatter.tags; 
-consoleLog(tags);
+//consoleLog(tags);
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
@@ -26,10 +26,11 @@ consoleLog(tags);
             <ul>
                 {
                 tags.map((item : TagObject, index: number)=> 
-                <TagListItem 
-                url = {`../tags/${item.tag}`} tag ={item.tag} 
-                key={`${index}-${item.tag}`}
-                /> )
+                    <TagListItem 
+                    url = {`../tags/${item.tag}`} tag={item.tag} 
+                    key={`${index}-${item.tag}`}
+                />
+                )
                 }
             </ul>
             }

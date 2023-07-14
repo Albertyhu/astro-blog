@@ -7,7 +7,10 @@ author: "Astro Learner"
 image:
   url: "https://docs.astro.build/assets/full-logo-light.png"
   alt: "The full Astro logo."
-tags: ["astro", "blogging", "learning in public"]
+tags: 
+  - tag: blogging 
+  - tag: learning in public
+  - tag: astro
 ---
 
 Published on: 2022-07-01
