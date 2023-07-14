@@ -1,7 +1,6 @@
 import { defineConfig } from 'astro/config';
 import NetlifyCMS from 'astro-netlify-cms';
 import tailwind from "@astrojs/tailwind";
-//import DefaultLayout from './src/layouts/MarkdownPostLayout.astro'; 
 import preact from "@astrojs/preact";
 
 // https://astro.build/config
@@ -27,7 +26,8 @@ export default defineConfig({
           name: "layout",
           widget: "hidden",
           label: "Layout",
-          default: './src/layouts/MarkdownPostLayout.astro',
+          default: '../../layouts/MarkdownPostLayout.astro',
+
         }, {
           name: "title",
           widget: 'string',

@@ -11,3 +11,7 @@ export interface postType {
 export type ImageType = string; 
 
 export type TagType = string;
+
+export type TagObject = {
+    tag: string, 
+}

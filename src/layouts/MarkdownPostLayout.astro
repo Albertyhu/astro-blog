@@ -2,8 +2,11 @@
 import { toAttributeString } from "astro/dist/runtime/server/render/util";
 import BaseLayout from "./BaseLayout.astro";
 import TagListItem from "../components/tagListItem.astro";
+import {consoleLog} from '../hooks/logging.jsx'; 
+import type { TagObject } from '../util/interface.tsx';
 const { frontmatter } = Astro.props;
 const tags = frontmatter.tags; 
+consoleLog(tags);
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
@@ -13,16 +16,19 @@ const tags = frontmatter.tags;
         <div>
             <h1 class="text-2xl font-bold">{frontmatter.title}</h1>
             <p>Written by <b>{frontmatter.author}</b></p>
+            {frontmatter.pubDate && 
+                <p>Published on {frontmatter.pubDate}</p>
+            }
             <hr class="border-2 bg-black w-full mb-5" />
             <slot />
         </div>
             {tags && tags.length > 0 &&
             <ul>
                 {
-                tags.map((tag : string, index: number)=> 
+                tags.map((item : TagObject, index: number)=> 
                 <TagListItem 
-                url = {`../tags/${tag}`} tag ={tag} 
-                key={`${index}-${tag}`}
+                url = {`../tags/${item.tag}`} tag ={item.tag} 
+                key={`${index}-${item.tag}`}
                 /> )
                 }
             </ul>
